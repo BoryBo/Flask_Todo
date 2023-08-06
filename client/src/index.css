@@ -1,3 +1,16 @@
+:root {
+  --bg-color-1: #15202b;
+  --bg-color-2: #15202bed;
+  --text-color-1:#14d027;
+  --text-color-2:#f23dff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +20,59 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* min-height: 100vh; */
+  height: 100vh;
+  /* max-width: 800px; */
+  min-width: 300px;
+  border: 4px solid var(--text-color-1);
+  margin: auto;
+  /* flex-grow: 1; */
+  background-color:  var(--bg-color-2);
+
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+  background: #282c34;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #282c34;
+}
+
+
+input,
+button {
+  font-size: 1.5rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 0.5rem;
+}
+
+.top-imp{
+   width: 80%;
+  box-shadow: 0 0px 1px var(--text-color-1), 0 1px 2px hsl(311, 100%, 50%);
+  background-color: var(--bg-color-2);
+}
+
+input:hover{
+  background-color:#14d02716;
+}
+input:focus {
+  outline: 3px solid var(--text-color-2);
+  background-color: var(--bg-color-2);
+  color: #14d027;
+   ;
+}
+
+::placeholder {
+  color:#14d027 ;
+  opacity: 0.5;
 }

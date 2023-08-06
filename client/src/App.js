@@ -1,32 +1,27 @@
 import { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import * as apiService from './apiService';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
+import TodosList from './Components/TodosList';
+import SearchBar from './Components/SearchBar';
+import AddItem from './Components/AddItem';
 
 function App () {
-  const [currentTime, setCurrentTime] = useState(0);
+  const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    apiService.getTime()
-      .then((res) => {
-        setCurrentTime(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
 
 
   return (
-    <div className="App">
-
-      <header className="App-header">
-
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>The current time is {currentTime}.</p>
-
-      </header>
-    </div>
+    <main className="App">
+      <Header />
+      <AddItem />
+      <SearchBar />
+      <TodosList
+        todos={todos}
+        setTodos={setTodos}
+      />
+      <Footer />
+    </main>
   );
 }
 

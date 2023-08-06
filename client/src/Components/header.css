@@ -1,0 +1,14 @@
+header{
+  width: 100%;
+  background-color: var(--bg-color-1);
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(20, 208, 39);
+  align-self: flex-start;
+  position: sticky;
+  top:0;
+  z-index: 1;
+}
