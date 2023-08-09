@@ -1,11 +1,11 @@
 import React from 'react';
-import './searchBar.css';
+import './addAndSearch.css';
 
 function SearchBar () {
   return (
     <>
       <input
-        className='top-imp'
+        className='add-search-imp'
         id='search-inp'
         type="search"
         placeholder='Search'

@@ -91,6 +91,7 @@ export const editTodo = async (id, field, value) => {
     return err.message;
   }
 };
+
 export const deleteTodo = async (id) => {
   try {
     const response = await fetch(`${SERVER_URL}/delete/${id}`, {

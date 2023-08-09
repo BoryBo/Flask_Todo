@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import logo from '../logo.svg';
+import logo from '../util/logo.svg';
 import './footer.css';
 
 

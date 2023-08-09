@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
-import * as apiService from '../apiService';
+import { getAllTodos } from '../util/apiService';
 import Todo from './Todo';
 import './todoList.css';
+import sortArrByTimestamp from '../util/sortByTimestamp.mjs';
 
 function TodosList ({ setTodos, todos }) {
 
   useEffect(() => {
-    apiService.getAllTodos()
+    getAllTodos()
       .then((res) => {
-        setTodos(res);
+        setTodos(sortArrByTimestamp(res) || res);
       })
       .catch(err => {
         console.log(err);
@@ -18,14 +19,21 @@ function TodosList ({ setTodos, todos }) {
 
   return (
     <ul className='todo-list'>
-      {todos.map(t =>
-        <Todo
-          key={t.id}
-          t={t}
-        />
-
-      )}
-
+      {todos.length > 0
+        ?
+        todos.map(todo =>
+          <Todo
+            key={todo.id}
+            todo={todo}
+            todos={todos}
+            setTodos={setTodos}
+          />
+        ) : (
+          <input
+            readOnly='There are no todos! Yay!'
+            className='no-todos-imp'>
+          </input>
+        )}
     </ul>
   );
 }

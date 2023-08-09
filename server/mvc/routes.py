@@ -51,8 +51,8 @@ def edit_todo(id):
 
         if 'content' in data:
           t.content = data['content']
-        if 'completed' in data:
-            t.completed = bool(data['completed'])
+        if 'checked' in data:
+            t.checked = bool(data['checked'])
 
         t.timestamp = datetime.utcnow()
         db.session.commit()

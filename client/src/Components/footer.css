@@ -2,15 +2,17 @@
   width: 100%;
   background-color: var(--bg-color-1);
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   align-items:center;
   font-size: calc(10px + 2vmin);
   position: sticky;
   bottom:0;
+  z-index: 3;
 }
 
 .snake {
-  height: 8vmin;
+  height: 8.5vmin;
   pointer-events: none;
   filter: drop-shadow(4px -3px 7px #bec3be9b);
 }
@@ -31,5 +33,5 @@
 }
 
 .time-par{
-  width:20%;
+  white-space: nowrap;
 }

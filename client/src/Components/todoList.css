@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  /* height: 80%; */
-  /* z-index:1; */
+}
+
+.no-todos-imp{
+  background-color: var(--bg-color-1);
+  text-align: center;
 }

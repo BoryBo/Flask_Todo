@@ -1,13 +1,20 @@
-header{
-  background-color: var(--bg-color-2);
+.app-header{
+  background-color: var(--bg-color-1);
   color: var(--text-color-2);
   display: flex;
-  /* align-self: flex-start; */
   width: 100%;
-  /* height: 5%; */
-  /* align-items: center; */
-  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
   position: sticky;
   top:0;
+  z-index: 3;
+}
+
+.moon-btn{
+  fill:#262697;
+}
+
+.sun-btn{
+  fill:#f9f93d;
 }

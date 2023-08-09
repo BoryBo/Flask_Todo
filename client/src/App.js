@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import * as apiService from './apiService';
+import * as apiService from './util/apiService';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import TodosList from './Components/TodosList';
@@ -14,8 +14,19 @@ function App () {
   return (
     <main className="App">
       <Header />
-      <AddItem />
-      <SearchBar />
+
+      <div className='add-and-search-div'>
+        <AddItem
+          todos={todos}
+          setTodos={setTodos}
+        />
+        <SearchBar
+          todos={todos}
+          setTodos={setTodos}
+        />
+
+      </div>
+
       <TodosList
         todos={todos}
         setTodos={setTodos}
