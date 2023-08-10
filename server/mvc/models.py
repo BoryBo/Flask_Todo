@@ -14,8 +14,9 @@ class Todo (db.Model):
     content=db.Column(db.String(), nullable = False) #, unique = True
     timestamp = db.Column(db.DateTime, default = datetime.utcnow)
 
-    def __init__(self, content ):
+    def __init__(self, content, checked ):
       self.content = content
+      self.checked = checked
 
     def __repr__(self):
        return f'Todo with ID :{self.id} => {self.content}'
@@ -39,16 +40,4 @@ class TodoSchema(ma.SQLAlchemySchema):
 
 
 todo_schema = TodoSchema()
-todos_schema = TodoSchema(many=True)  # For serializing lists of Todo objects
-
-
-
-# >>> pyton
-# >>> from app_package import db, app
-# >>> from app_package.models import Todo, ...
-# >>> app.app_context().push()
-# >>> db.create_all()
-
-# t=Todo(checked=True, content="wash dishes")
-# >>> db.session.add(t)
-# >>> db.session.commit()
+todos_schema = TodoSchema(many=True)  
