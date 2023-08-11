@@ -1,15 +1,11 @@
 import time
+from flask import json
+from werkzeug.exceptions import HTTPException
 from datetime import datetime, timezone
-from bs4 import BeautifulSoup
 from .models import  db, Todo, todo_schema, todos_schema
 from flask import request  # jsonify() not necessary -> dict is automatically JSONified
 from . import app
 
-# TODO: REMOVE RETURN STATEMENTS AND TIME METHOD, addd status codes
-
-
-from flask import json
-from werkzeug.exceptions import HTTPException
 
 @app.errorhandler(HTTPException)
 def handle_exception(e):
@@ -24,38 +20,6 @@ def handle_exception(e):
     return response
 
 
-
-@app.route('/time')
-def get_time():
-    sec_since_epoch = time.time()
-    curr = time.ctime(sec_since_epoch)
-    return {'time' : curr}
-
-# def prettifyError(err):
-#     soup = BeautifulSoup(err, 'html.parser')
-
-#     err_p = soup.find('p')
-#     err_title = soup.find('title') #st code
-#     err_h1 = soup.find('h1')
-
-#     err_status_code = 500 # default
-#     if err_title:
-#         try:
-#             err_staus_code = int(err_title.get_text[0:3])
-#             print("err_staus_code", err_staus_code)
-#         except:
-#             pass
-
-#     err_message = err_p.get_text() if err_p else "Some error"
-#     err_name = err_h1.get_text() if err_h1 else "Server Error message"
-
-#     return {
-#         'status': err_status_code,
-#         'name': err_name,
-#         'message' : err_message
-# }
-
-
 @app.route('/get-all')
 def get_all_todos():
     ''' returns list of todos dict'''
@@ -64,7 +28,7 @@ def get_all_todos():
         result = todos_schema.dump(out)
         return result
     except Exception as e:
-        return {e}
+        return e
 
 
 @app.route('/add', methods = ['POST'])
@@ -105,7 +69,7 @@ def delete_todo(id):
         db.session.commit()
         return {'message': f'Todo with id: {id} was deleted successfully'}
     except Exception as e:
-        return {'error': f'Failed to delete todo: {e}' }, 500
+        return e
 
 
 @app.route('/update/<int:id>', methods = ['PUT'])

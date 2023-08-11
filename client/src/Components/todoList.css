@@ -7,4 +7,24 @@
 .no-todos-imp{
   background-color: var(--bg-color-1);
   text-align: center;
+  color: var(--text-color-2);
+  font-weight: 800;
+}
+
+.error-mess,
+.loading-mess{
+  background-color: var(--bg-color-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  font-weight: 800;
+  z-index: 4;
+}
+.error-mess>p{
+  background-color: var(--bg-color-1);
+  color:#c40000;
+  font-weight: 800;
+  z-index: 4;
+  padding: 0.5em;
 }

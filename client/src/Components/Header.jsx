@@ -9,14 +9,14 @@ function Header () {
     <header className='app-header'>
       <h1>Todo List</h1>
       <div>
-      <BsSunFill
-      className='sun-btn'
-      role='button'
-      ></BsSunFill>
-      <BsFillMoonStarsFill
-      className='moon-btn'
-      role='button'
-      ></BsFillMoonStarsFill>
+        <BsSunFill
+          className='sun-btn'
+          role='button'
+        ></BsSunFill>
+        <BsFillMoonStarsFill
+          className='moon-btn'
+          role='button'
+        ></BsFillMoonStarsFill>
       </div>
 
     </header>

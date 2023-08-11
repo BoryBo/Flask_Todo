@@ -1,44 +1,17 @@
 let SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-export const getTime = async () => {
-  try {
-    const response = await fetch(`${SERVER_URL}/time`);
-    if (response.status === 404) {
-      throw new Error('Not found');
-    }
-    if (response.status === 500) {
-      throw new Error('Server Error');
-    }
-    else if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
-    const data = await response.json();
-    return data.time;
-  }
-  catch (err) {
-    console.error("Something went wrong: ", err);
-    return err.message;
-  }
-};
-
 export const getAllTodos = async () => {
   try {
     const response = await fetch(`${SERVER_URL}/get-all`);
-    if (response.status === 404) {
-      throw new Error('Not found');
-    }
-    if (response.status === 500) {
-      throw new Error('Server Error');
-    }
-    else if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error:
+      * ${response.status} * ${response.statusText}`);
     }
     const data = await response.json();
     return data;
   }
   catch (err) {
-    console.error("Something went wrong: ", err);
-    return err.message;
+    throw err;
   }
 };
 
@@ -49,21 +22,17 @@ export const addTodo = async (newTodo) => {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(newTodo)
     });
-    if (response.status === 404) {
-      throw new Error('Not found');
+    if (!response.ok) {
+      throw new Error(`HTTP error:
+      * ${response.status} * ${response.statusText}`);
     }
-    if (response.status === 500) {
-      throw new Error('Server Error');
-    }
-    else if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
+
     const data = await response.json();
     return data;
   }
   catch (err) {
-    console.error("Something went wrong: ", err);
-    return err.message;
+    console.error(err);
+    throw err;
   }
 };
 
@@ -74,21 +43,16 @@ export const editTodo = async (id, field, value) => {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ [field]: value })
     });
-    if (response.status === 404) {
-      throw new Error('Not found');
-    }
-    if (response.status === 500) {
-      throw new Error('Server Error');
-    }
-    else if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error:
+      * ${response.status} * ${response.statusText}`);
     }
     const data = await response.json();
     return data;
-  }
-  catch (err) {
-    console.error("Something went wrong: ", err);
-    return err.message;
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
 };
 
@@ -97,20 +61,17 @@ export const deleteTodo = async (id) => {
     const response = await fetch(`${SERVER_URL}/delete/${id}`, {
       method: 'DELETE',
     });
-    if (response.status === 404) {
-      throw new Error('Not found');
-    }
-    if (response.status === 500) {
-      throw new Error('Server Error');
-    }
-    else if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error:
+      * ${response.status} * ${response.statusText}`);
     }
     const data = await response.json();
     return data;
   }
   catch (err) {
-    console.error("Something went wrong: ", err);
-    return err.message;
+    console.error(err);
+    throw err;
   }
 };
+

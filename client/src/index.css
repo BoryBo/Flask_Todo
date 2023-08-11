@@ -1,9 +1,19 @@
 :root {
+  --bg-color-1: #d1e1ef;
+  --bg-color-2: #8fb8e3;
+  --text-color-1:#ebf0f4;
+  --text-color-2:#311371;
+  --checkbox-hoover:#3113718f;
+}
+:root {
   --bg-color-1: #15202b;
   --bg-color-2: #425569;
   --text-color-1:#0b1117;
   --text-color-2:#c5c6c6;
+  --checkbox-hoover:#dddddd2d
 }
+
+
 
 * {
   margin: 0;
@@ -35,12 +45,15 @@ body {
 
 input,
 button,
-label {
+label,
+.error-mess,
+.loading-mess {
   font-size: calc(10px + 1.5vmin);
   font-family: inherit;
   border: none;
   border-radius: 50px;
   padding: 0.5em 0.5em;
+
 }
 
 ::-webkit-scrollbar {
@@ -52,6 +65,8 @@ label {
 ::-webkit-scrollbar-thumb {
   background: var(--bg-color-1);
 }
+
+
 
 /*
 grid-template:

@@ -12,14 +12,10 @@
   width: 80%;
   align-items: stretch;
   background-color:  var(--bg-color-2);
-  /* position: sticky; */
-  /* top: 20%; */
-  /* padding-top: 1rem; */
-  /* max-height: 18vh; */
 }
 
 input:hover{
-  background-color:#dddddd74;
+  background-color:var(--checkbox-hoover);
 }
 
 input:focus {

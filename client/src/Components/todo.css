@@ -54,7 +54,6 @@
   /* text-overflow:ellipsis; */
   min-height: 3vh;
   max-height: 4vh;
-  /* border:1px solid red */
 }
 
 .edit-input{
@@ -84,7 +83,7 @@
 }
 
 .checkbox-inp:hover{
-  background-color:#dddddd2d;
+  background-color:var(--checkbox-hoover);
 }
 
 .checkbox-inp:checked {

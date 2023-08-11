@@ -3,14 +3,13 @@ import { addTodo } from '../util/apiService';
 import './addAndSearch.css';
 import sortArrByTimestamp from '../util/sortByTimestamp.mjs';
 
-function AddItem ({ setTodos, todos }) {
+function AddItem ({ setTodos, todos, setErr }) {
   const [newTodo, setNewTodo] = useState({
     content: '',
     checked: false
   });
 
   function handleChange (e) {
-    console.log(e.target.value);
     setNewTodo({ ...newTodo, content: e.target.value });
   }
 
@@ -21,10 +20,11 @@ function AddItem ({ setTodos, todos }) {
         let updatedList = [...todos, newTodo];
         setTodos(sortArrByTimestamp(updatedList));
         setNewTodo({
-          content: ''
+          content: '',
+          checked: false
         });
       })
-      .catch(e => console.log(e));
+      .catch(e => setErr(e));
   }
 
   function handleKeyPress (e) {

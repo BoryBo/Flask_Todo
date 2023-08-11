@@ -2,50 +2,97 @@ import React, { useState } from 'react';
 import './todo.css';
 import { TiDelete } from "react-icons/ti";
 import { BiSolidEditAlt } from "react-icons/bi";
+import { FaSave } from "react-icons/fa";
+import { editTodo, deleteTodo } from '../util/apiService';
+import sortArrByTimestamp from '../util/sortByTimestamp.mjs';
 
-
-function Todo ({ t }) {
+function Todo ({ todo, setTodos, todos, setErr }) {
   const [editMode, setEditMode] = useState(false);
+
+  function handleChange (ev, id) {
+    let updatedTodos = todos.map(function (t) {
+      if (t.id === id) {
+
+        if (ev.target.name === 'content') {
+          return { ...t, [ev.target.name]: ev.target.value };
+        }
+        if (ev.target.name === 'checked') {
+          return { ...t, [ev.target.name]: !t.checked };
+        }
+      }
+      return t;
+    });
+
+    setTodos(sortArrByTimestamp(updatedTodos));
+  }
+
+  function handleDeleteClick (id) {
+    deleteTodo(id)
+      .then(() => setTodos(todos.filter(t => t.id !== id)))
+      .catch(error => setErr(error));
+  }
+
+  function handleSaveClick (id, field, value) {
+    value = value.toString();  //bah
+    editTodo(id, field, value)
+      .then(() => setEditMode(false))
+      .catch((e) => setErr(e));
+  }
+
   return (
+
     <li className='todo-item'>
 
-      {/* {t.completed} */}
-      <label>
+      {editMode ? (
         <input
-          id={`checkb ${t.id}`}
-          className='checkbox-inp '
-          type="checkbox"
-          name='todo-cont'
-          defaultValue={t.completed}
-        // checked={t.completed ? "checked" : ''}
-        ></input>
-        {t.content}
-      </label>
-
-      {/* <div className="smiley"></div>  <label>
-        <input
-          className='content-imp'
-          type='text'
-          defaultValue={t.content}
-        ></input>
-      </label> */}
-
-      <div className='btns'>
-        <TiDelete
-          className='del-btn'
-          role='button'
-          tabIndex='0'
+          id={`checkb ${todo.id}`}
+          type="text"
+          name='content'
+          defaultValue={todo.content}
+          className='edit-input'
+          onChange={(ev) => handleChange(ev, todo.id)}
         />
-        <BiSolidEditAlt
-          className='edit-btn'
-          role='button'
-          tabIndex='0'
-        />
-      </div>
+      ) : (
+        <label >
+          <input
+            id={`checkb ${todo.id}`}
+            type="checkbox"
+            name='checked'
+            defaultChecked={todo.checked}
+            className='checkbox-inp'
+            onChange={(ev) => handleChange(ev, todo.id)}
+            onClick={() => handleSaveClick(todo.id, 'checked', !todo.checked)}
+          />
+          {todo.content}
+        </label>
+      )}
 
-      {/* <h5 className='timestamp'>
-        Created at:{` ${(t.timestamp).slice(0, -10).replace('T', ' ')}`}
-      </h5> */}
+      {editMode ? (
+        <div className='btns'>
+          <FaSave
+            className='save-btn'
+            role='button'
+            onClick={() => handleSaveClick(todo.id, 'content', todo.content)}
+          />
+        </div>
+      ) : (
+        <div className='btns'>
+
+          <BiSolidEditAlt
+            className='edit-btn'
+            role='button'
+            tabIndex='0'
+            onClick={() => setEditMode(true)}
+          />
+          <TiDelete
+            className='del-btn'
+            role='button'
+            tabIndex='0'
+            onClick={() => handleDeleteClick(todo.id)}
+          />
+        </div>
+      )}
+
 
     </li>
   );
