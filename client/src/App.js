@@ -12,6 +12,7 @@ function App () {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
   const [query, setQuery] = useState('');
+  const [theme, setTheme] = useState('light');
 
 
   useEffect(() => {
@@ -29,11 +30,12 @@ function App () {
 
   }, []);
 
-
   return (
-    <main className="App">
-      <Header />
-
+    <main className="App" data-theme={theme}>
+      <Header
+        theme={theme}
+        setTheme={setTheme}
+      />
       <div className='add-and-search-div'>
         <AddItem
           todos={todos}

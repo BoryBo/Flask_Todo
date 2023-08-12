@@ -1,16 +1,28 @@
 :root {
-  --bg-color-1: #d1e1ef;
-  --bg-color-2: #8fb8e3;
-  --text-color-1:#ebf0f4;
-  --text-color-2:#311371;
-  --checkbox-hoover:#3113718f;
+  --bg-color-1: #fcde67;
+  --bg-color-2: #5bccf6;
+  --text-color-1:#691c71;
+  --text-color-2:#092c39;
+  --border-todo: 0.1em solid #e889ff;
+  --shadow: 0px 0px 15px 4px #4547ebdb;
+  --clickable:#ac49d7;
+  --checkbox-hoover:#885faa83;
+  --filtered:  contrast(1.2) brightness(1.5) hue-rotate(191deg) drop-shadow(4px -3px 7px #d816d29b);
+  --b-shadow: 11px 11px 11px  #4547ebdb, -11px -11px 11px #f2dafaac;
+
 }
-:root {
-  --bg-color-1: #15202b;
-  --bg-color-2: #425569;
-  --text-color-1:#0b1117;
-  --text-color-2:#c5c6c6;
-  --checkbox-hoover:#dddddd2d
+/* data-* attribute: */
+[data-theme='dark'] {
+  --bg-color-1: #1d2023;
+  --bg-color-2: #474b47;
+  --text-color-1:#61892f;
+  --text-color-2:#95bd5d;
+  --border-todo: 0.1em solid rgb(129, 133, 129);;
+  --shadow: 0px 0px 15px 1px #a3cc947a;
+  --clickable:#73a036;
+  --checkbox-hoover:#4e594eda;
+  --filtered:invert(0) drop-shadow(4px -3px 7px #60892fd6);
+  --b-shadow: 11px 11px 11px  #080101db, -11px -11px 11px #dddddd29;
 }
 
 
@@ -19,7 +31,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: var(--text-color-2)
 }
 
 body {
@@ -34,7 +45,7 @@ body {
 .App {
   min-height: 100vh;
   min-width: 300px;
-  border: 4px solid var(--text-color-2);
+  border: 4px solid var(--text-color-1);
   margin: auto;
   background-color:  var(--bg-color-2);
   display: grid;
@@ -65,27 +76,3 @@ label,
 ::-webkit-scrollbar-thumb {
   background: var(--bg-color-1);
 }
-
-
-
-/*
-grid-template:
-"head"
-"add_search"
-"main"
-"foot" ;
-}
-
-.app-header {
-grid-area: head;
-}
-.add-and-search-imp {
-grid-area: add_search;
-}
-.todo-list {
-grid-area: main;
-
-}
-.app-footer {
-grid-area: foot;
-*/
