@@ -5,22 +5,21 @@
   list-style-type: none;
   border: var(--border-todo);
   margin-top: 1vh;
-  border-radius: 50px;
+  border-radius: 80px;
   background-color: var(--bg-color-1);
   padding: 0.5rem;
   box-shadow: var(--shadow);
 }
 
-.checkbox-inp,
+/*-------- SVG --------*/
+
 .edit-btn,
 .del-btn,
 .save-btn{
-  width:1.8rem;
-  height: 1.8rem;
+  width:5vmin;
+  height: 5rem;
   border-radius: 50px ;
-  outline: none;
   color: var(--clickable);
-  /* aspect-ratio: 1; */
 }
 
 .edit-btn{
@@ -45,7 +44,7 @@
   background-color: var(--bg-color-1);
   color: var(--text-color-2);
   text-transform: capitalize;
-  font-weight: 500;
+  font-weight: 700;
   width: 60vw;
   display:flex;
   align-items:center;
@@ -60,7 +59,6 @@
   background-color: var(--bg-color-1);
   color: var(--text-color-2);
   text-transform: capitalize;
-  font-weight: 500;
   width: 60vw;
   display:flex;
   align-items:center;
@@ -87,5 +85,5 @@
 }
 
 .checkbox-inp:checked {
-  box-shadow: inset 0 0 0 20px var(--text-color-1);
+  box-shadow: inset 0 0 0 50px var(--text-color-1);
 }

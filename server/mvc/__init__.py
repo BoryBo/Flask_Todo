@@ -1,13 +1,14 @@
-#import sys
+# import sys
 # print("executing __init__")
 # print(sys.version)
 
-from flask import Flask
 from config import Config
+from flask import Flask
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from .models import db, ma, Todo
+from flask_sqlalchemy import SQLAlchemy
+
+from .models import Todo, db, ma
 
 app = Flask(__name__)
 CORS(app)
@@ -21,4 +22,4 @@ migrate = Migrate(app, db)
 with app.app_context():
   db.create_all()
 
-from . import routes # workaround to circular imports
+from . import routes  # workaround to circular imports

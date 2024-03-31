@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { getAllTodos } from './util/apiService';
-import sortArrByTimestamp from './util/sortByTimestamp.mjs';
+import { useEffect, useState } from 'react';
+import AddItem from './Components/AddItem';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
-import TodosList from './Components/TodosList';
 import SearchBar from './Components/SearchBar';
-import AddItem from './Components/AddItem';
+import TodosList from './Components/TodosList';
+import { getAllTodos } from './util/apiService';
+import sortArrByTimestamp from './util/sortByTimestamp.mjs';
 
 function App () {
   const [todos, setTodos] = useState([]);

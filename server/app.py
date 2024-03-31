@@ -1,5 +1,5 @@
 from mvc import app
-from mvc.models import db, Todo
+from mvc.models import Todo, db
 
 
 @app.shell_context_processor

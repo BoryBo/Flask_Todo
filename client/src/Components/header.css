@@ -5,16 +5,16 @@
   width: 100%;
   align-items: center;
   justify-content: space-around;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(13px + 2vmin);
   position: sticky;
   top:0;
   z-index: 3;
 }
 
 .moon-btn{
-  fill:#262697;
+  fill:var(--text-color-1);
 }
 
 .sun-btn{
-  fill:#f9f93d;
+  fill:#d3f93d;
 }

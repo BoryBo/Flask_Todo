@@ -1,9 +1,8 @@
 import time
-from flask import json
+from flask import json, request
 from werkzeug.exceptions import HTTPException
 from datetime import datetime, timezone
 from .models import  db, Todo, todo_schema, todos_schema
-from flask import request  # jsonify() not necessary -> dict is automatically JSONified
 from . import app
 
 
