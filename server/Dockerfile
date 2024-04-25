@@ -1,23 +1,22 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 
 # set working directory in the container
 WORKDIR /app
 
-# set environment variables
-ENV SQLALCHEMY_DATABASE_URI=postgresql://test_user:test_password@localhost:5432/test_db
-ENV FLASK_APP=app.py
-
-# creates directory
-ADD ./ /app/
-# COPY . .
+COPY requirements.txt .
 
 # install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    && apt-get -y install libpq-dev gcc \
+    && rm -rf /var/lib/apt/lists/*
 
 # install Python dependencies
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+COPY . .
 
-CMD ["flask", "app.py"]
-# CMD ["python", "hello_world.py"]
+EXPOSE 8000
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "application:app"]
+# CMD ["/bin/bash", "/app/entrypoint.sh"]

@@ -1,13 +1,14 @@
 import os
 
-from dotenv import load_dotenv
+with open(os.environ['POSTGRES_USER_FILE']) as f:
+    db_user = f.read()
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, '.env'))
-# print(os.environ.get('SQLALCHEMY_DATABASE_URI'))
+with open(os.environ['POSTGRES_PASSWORD_FILE']) as f:
+    db_password = f.read()
 
 class Config(object):
-    # SECRET_KEY = os.environ.get('SECRET_KEY') or 'some secret key'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI') or "postgresql://<username>:<password>@<host>:<port>/<dbname>"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+    DB_USER = db_user
+    DB_PASS = db_password
+    DB_PORT = os.environ['POSTGRES_PORT']
+    DB_NAME = os.environ['POSTGRES_DB']
+    SQLALCHEMY_DATABASE_URI = f'postgresql://{DB_USER}:{DB_PASS}@db:{DB_PORT}/{DB_NAME}'

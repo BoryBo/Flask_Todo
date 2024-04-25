@@ -1,10 +1,8 @@
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
 
-db = SQLAlchemy()
-ma = Marshmallow()
-# print(dir(db))
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_marshmallow import Marshmallow
+from . import db, ma
 
 class Todo (db.Model):
     __tablename__ = 'Todos'
@@ -40,4 +38,4 @@ class TodoSchema(ma.SQLAlchemySchema):
 
 
 todo_schema = TodoSchema()
-todos_schema = TodoSchema(many=True)  
+todos_schema = TodoSchema(many=True)

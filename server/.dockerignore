@@ -5,6 +5,7 @@ __pycache__
 .Python
 .env
 .gitignore
+.dockerignore
 venv
 pip-log.txt
 .tox

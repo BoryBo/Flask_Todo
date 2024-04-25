@@ -1,9 +1,9 @@
-import time
-from flask import json, request
+from datetime import datetime
+
+from application import app, db
+from application.models import Todo, todo_schema, todos_schema
+from flask import json, redirect, request, url_for
 from werkzeug.exceptions import HTTPException
-from datetime import datetime, timezone
-from .models import  db, Todo, todo_schema, todos_schema
-from . import app
 
 
 @app.errorhandler(HTTPException)
@@ -18,6 +18,9 @@ def handle_exception(e):
     response.content_type = "application/json"
     return response
 
+@app.route('/')
+def index():
+    return redirect('/get-all')
 
 @app.route('/get-all')
 def get_all_todos():
@@ -66,7 +69,7 @@ def delete_todo(id):
                 }
         db.session.delete(t)
         db.session.commit()
-        return {'message': f'Todo with id: {id} was deleted successfully'}
+        return {'message': f'Todo with id: {id} was successfully deleted.'}
     except Exception as e:
         return e
 
@@ -105,3 +108,7 @@ def edit_todo(id):
         return (result)
     except Exception as e:
         return e
+
+@app.route('/test')
+def hi():
+    return "Hello World"
