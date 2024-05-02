@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './todo.css';
-import { TiDelete } from "react-icons/ti";
 import { BiSolidEditAlt } from "react-icons/bi";
 import { FaSave } from "react-icons/fa";
-import { editTodo, deleteTodo } from '../util/apiService';
+import { TiDelete } from "react-icons/ti";
+import { deleteTodo, editTodo } from '../util/apiService';
 import sortArrByTimestamp from '../util/sortByTimestamp.mjs';
+import './todo.css';
 
 function Todo ({ todo, setTodos, todos, setErr }) {
   const [editMode, setEditMode] = useState(false);
@@ -63,13 +63,14 @@ function Todo ({ todo, setTodos, todos, setErr }) {
             onChange={(ev) => handleChange(ev, todo.id)}
             onClick={() => handleSaveClick(todo.id, 'checked', !todo.checked)}
           />
-          {todo.content}
+          <p>{todo.content}</p>
         </label>
       )}
 
       {editMode ? (
         <div className='btns'>
           <FaSave
+            title='Save'
             className='save-btn'
             role='button'
             onClick={() => handleSaveClick(todo.id, 'content', todo.content)}
@@ -79,12 +80,14 @@ function Todo ({ todo, setTodos, todos, setErr }) {
         <div className='btns'>
 
           <BiSolidEditAlt
+            title='Edit'
             className='edit-btn'
             role='button'
             tabIndex='0'
             onClick={() => setEditMode(true)}
           />
           <TiDelete
+            title='Delete'
             className='del-btn'
             role='button'
             tabIndex='0'

@@ -1,22 +1,42 @@
+name: todo_app
 services:
+  client:
+    container_name: client
+    restart: always
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_SERVER_URL: http://localhost:8000
+    ports:
+      - 8080:80
+    depends_on:
+      - server
+    networks:
+      - frontend_net
+
   server:
     container_name: server
+    restart: always
+
     build:
       context: ./server
       dockerfile: Dockerfile
-
     ports:
       - "8000:8000"
     depends_on:
       db:
+        # condition: service_started
         condition: service_healthy
     networks:
-      - todo_net
+      - backend_net
+      - frontend_net
     secrets:
       - postgres_user
       - postgres_password
     environment:
-      POSTGRES_DB: db
+      POSTGRES_HOST: db
+      POSTGRES_DB: todo_db
       POSTGRES_PORT: 5432
       POSTGRES_USER_FILE: /run/secrets/postgres_user
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
@@ -25,6 +45,7 @@ services:
     container_name: db
     image: postgres:14
     restart: always
+    shm_size: 128mb
     secrets:
       - postgres_user
       - postgres_password
@@ -32,21 +53,26 @@ services:
       POSTGRES_USER_FILE: /run/secrets/postgres_user
       PGUSER: todo_db_user
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
-    ports:
-      - 5432:5432
+      POSTGRES_DB: todo_db
+    expose:
+      - 5432
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
-      - todo_net
+      - backend_net
     healthcheck:
       test:
-        ["CMD-SHELL", "pg_isready -d db -U $(cat /run/secrets/postgres_user)"]
+        [
+          "CMD-SHELL",
+          "pg_isready -d todo_db -U $(cat /run/secrets/postgres_user)"
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
 
 networks:
-  todo_net:
+  frontend_net:
+  backend_net:
 
 volumes:
   pg_data:
@@ -56,5 +82,3 @@ secrets:
     file: ./secrets/postgres_user.txt
   postgres_password:
     file: ./secrets/postgres_password.txt
-  db_connection:
-    file: ./secrets/db_connection.txt

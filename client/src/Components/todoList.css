@@ -1,18 +1,21 @@
-.todo-list{
+.todo-list {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.no-todos-imp{
+.no-todos-imp {
   background-color: var(--bg-color-1);
   text-align: center;
   color: var(--text-color-2);
   font-weight: 800;
+  width: 80%;
 }
 
 .error-mess,
-.loading-mess{
+.loading-mess {
   background-color: var(--bg-color-1);
   display: flex;
   flex-direction: column;
@@ -21,9 +24,9 @@
   font-weight: 800;
   z-index: 4;
 }
-.error-mess>p{
+.error-mess > p {
   background-color: var(--bg-color-1);
-  color:#c40000;
+  color: #c40000;
   font-weight: 800;
   z-index: 4;
   padding: 0.5em;

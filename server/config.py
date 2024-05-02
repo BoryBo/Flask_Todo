@@ -11,4 +11,5 @@ class Config(object):
     DB_PASS = db_password
     DB_PORT = os.environ['POSTGRES_PORT']
     DB_NAME = os.environ['POSTGRES_DB']
-    SQLALCHEMY_DATABASE_URI = f'postgresql://{DB_USER}:{DB_PASS}@db:{DB_PORT}/{DB_NAME}'
+    DB_HOST = os.environ['POSTGRES_HOST']
+    SQLALCHEMY_DATABASE_URI = f'postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}'

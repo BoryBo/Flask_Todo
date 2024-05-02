@@ -2,7 +2,7 @@ from datetime import datetime
 
 from application import app, db
 from application.models import Todo, todo_schema, todos_schema
-from flask import json, redirect, request, url_for
+from flask import json, redirect, request
 from werkzeug.exceptions import HTTPException
 
 

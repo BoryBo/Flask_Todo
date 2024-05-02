@@ -1,77 +1,49 @@
-.todo-item{
+.todo-item {
   display: flex;
   align-items: center;
   justify-content: space-around;
   list-style-type: none;
   border: var(--border-todo);
-  margin-top: 1vh;
   border-radius: 80px;
   background-color: var(--bg-color-1);
-  padding: 0.5rem;
   box-shadow: var(--shadow);
+  width: 80%;
+  height: 6vmin;
 }
 
-/*-------- SVG --------*/
-
-.edit-btn,
-.del-btn,
-.save-btn{
-  width:5vmin;
-  height: 5rem;
-  border-radius: 50px ;
-  color: var(--clickable);
-}
-
-.edit-btn{
-  margin-left: 0.5rem;
-}
-
-.edit-btn:hover,
-.save-btn{
-  fill:#117b09;
-  box-shadow: 0px 0px 10px 1px rgba(0, 128, 0, 0.5);
-  padding: 4px;
-}
-
-.del-btn:hover{
-  box-shadow: 0px 0px 10px 1px rgba(255, 0, 0, 0.5);
-  fill:#b42020;
-  padding: 4px;
-}
-
-/* .content-imp, */
- label{
+label,
+.edit-input {
   background-color: var(--bg-color-1);
+  background-color: transparent;
   color: var(--text-color-2);
-  text-transform: capitalize;
   font-weight: 700;
-  width: 60vw;
-  display:flex;
-  align-items:center;
-
-  overflow-y:auto;
-  /* text-overflow:ellipsis; */
+  width: 81%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  /* overflow-y:auto; */
+  /* text-transform: capitalize; */
   min-height: 3vh;
   max-height: 4vh;
 }
 
-.edit-input{
-  background-color: var(--bg-color-1);
-  color: var(--text-color-2);
-  text-transform: capitalize;
-  width: 60vw;
-  display:flex;
-  align-items:center;
-  overflow-x:hidden;
-  overflow-y:hidden;
+.edit-input {
+  width: 86%;
 }
-.edit-input:hover{
+
+label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.edit-input:hover {
   background-color: var(--bg-color-1);
 }
 
-.checkbox-inp{
+.checkbox-inp {
   margin-right: 2rem;
-  transition: box-shadow .6s;
+  transition: box-shadow 0.6s;
   background: var(--bg-color-1);
   cursor: pointer;
   border: 0.5px solid var(--clickable);
@@ -80,10 +52,51 @@
   -webkit-appearance: none;
 }
 
-.checkbox-inp:hover{
-  background-color:var(--checkbox-hoover);
+.checkbox-inp:hover {
+  background-color: var(--checkbox-hoover);
 }
 
 .checkbox-inp:checked {
   box-shadow: inset 0 0 0 50px var(--text-color-1);
+}
+
+/*-------- SVG --------*/
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.edit-btn,
+.del-btn,
+.save-btn {
+  width: 3rem;
+  min-width: 2rem;
+  height: auto;
+  color: var(--clickable);
+}
+.del-btn,
+.save-btn {
+  margin-right: 0.5rem;
+}
+.save-btn {
+  width: 2.5rem;
+}
+
+.edit-btn {
+  margin-left: 0.5rem;
+}
+
+.edit-btn:hover {
+  fill: #0e70c0;
+  padding: 4px;
+}
+.save-btn:hover {
+  fill: #06b443;
+  padding: 4px;
+}
+
+.del-btn:hover {
+  fill: #cc2626;
+  padding: 4px;
 }

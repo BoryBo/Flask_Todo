@@ -32,23 +32,23 @@ function App () {
 
   return (
     <main className="App" data-theme={theme}>
-      <Header
-        theme={theme}
-        setTheme={setTheme}
-      />
-      <div className='add-and-search-div'>
-        <AddItem
-          todos={todos}
-          setTodos={setTodos}
-          setErr={setErr}
+        <Header
+          theme={theme}
+          setTheme={setTheme}
         />
-        <SearchBar
-          todos={todos}
-          setTodos={setTodos}
-          query={query}
-          setQuery={setQuery}
-        />
-      </div>
+        <div className='add-and-search-div'>
+          <AddItem
+            todos={todos}
+            setTodos={setTodos}
+            setErr={setErr}
+          />
+          <SearchBar
+            todos={todos}
+            setTodos={setTodos}
+            query={query}
+            setQuery={setQuery}
+          />
+        </div>
 
       {loading && (
         <p className='loading-mess'>Loading, please wait...</p>

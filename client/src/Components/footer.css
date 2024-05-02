@@ -7,7 +7,7 @@
   justify-content: space-around;
   align-items:center;
   font-size: calc(13px + 2.5vmin);
-  position: sticky;
+  position: fixed;
   bottom:0;
   z-index: 3;
 }

@@ -1,22 +1,24 @@
-
-.add-search-imp{
-  box-shadow: var(--b-shadow);
-  background-color:var(--bg-color-2);
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  font-weight: 600;
-}
-
-.add-and-search-div{
+.add-and-search-div {
+  margin: 1.5rem 0;
   display: flex;
+  gap: 1.5rem;
   flex-direction: column;
-  width: 80%;
-  align-items: stretch;
-  background-color:  var(--bg-color-2);
+  width: 100%;
+  align-items: center;
+  background-color: var(--bg-color-2);
 }
 
-input:hover{
-  background-color:var(--checkbox-hoover);
+.add-search-imp {
+  box-shadow: var(--b-shadow);
+  background-color: var(--bg-color-2);
+  font-weight: 600;
+  width: 80%;
+  min-height: 3vh;
+  max-height: 4vh;
+}
+
+input:hover {
+  background-color: var(--checkbox-hoover);
 }
 
 input:focus {
@@ -26,10 +28,6 @@ input:focus {
 }
 
 ::placeholder {
-  color:var(--text-color-2) ;
+  color: var(--text-color-2);
   opacity: 0.9;
 }
-
-
-
-

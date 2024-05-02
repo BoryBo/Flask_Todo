@@ -1,2 +1,2 @@
-secrets/
-secrets/*
+secrets/*.txt
+!secrets/*.example.txt

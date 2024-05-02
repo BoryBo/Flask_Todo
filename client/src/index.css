@@ -1,38 +1,35 @@
-/* .concept:hover {
-  transform: translateY(-5px);
-  transition: transform 0.2s;
-  box-shadow: 0 2px 30px rgba(234, 78, 240, 0.4);
-}
- */
-
-
 :root {
   --bg-color-1: #f9f2dd;
   --bg-color-2: #ffeac8;
-  --text-color-1:#4c4231;
-  --text-color-2:#503104;
+  --text-color-1: #4c4231;
+  --text-color-2: #503104;
   --border-todo: 0.1px solid #b9823b87;
-  --shadow: 0px 0px 10px 1px #9972337f;
-  --clickable:#af7431;
-  --checkbox-hoover:#ad720d58;
-  --filtered: sepia(100%) drop-shadow(4px -3px 7px #5b4f3bc3);
-  --b-shadow: 6px 8px 11px  #ba863391, -6px -8px 11px #fff7f5b7;
+  --shadow: 0px 0px 6px 1px #ba863391;
+  --clickable: #9a886b;
+  --checkbox-hoover: #ad720d58;
+  /* --filtered: sepia(100%) drop-shadow(15px 15px 1px #5b4f3b35); */
+  --filtered: sepia(100%);
+  --b-shadow: 6px 6px 5px #ba863391, -5px -6px 5px #fff7f5b7;
 }
 
 [data-theme='dark'] {
   --bg-color-1: #1d2023;
   --bg-color-2: #474b47;
-  --text-color-1:#61892f;
-  --text-color-2:#95bd5d;
-  --border-todo: 0.1px solid rgba(129, 133, 129, 0.764);;
-  --shadow: 0px 0px 10px 1px #a3cc947a;
-  --clickable:#73a036;
-  --checkbox-hoover:#4e594eda;
-  --filtered:invert(0) drop-shadow(4px -3px 7px #60892fc8);
-  --b-shadow: 6px 6px 11px  #080101a1, -4px -6px 8px #dddddd29;
+  --text-color-1: #61892f;
+  --text-color-2: #95bd5d;
+  --border-todo: 0.1px solid rgba(129, 133, 129, 0.764);
+  --shadow: 0px 0px 6px 1px #a3cc947a;
+  --clickable: #73a036;
+  --checkbox-hoover: #4e594eda;
+  --filtered: invert(0);
+  /* --filtered: invert(0) drop-shadow(15px 15px 1px #60892f3d); */
+  --b-shadow: 6px 6px 5px #080101a1, -4px -6px 5px #dddddd29;
 }
 
-
+html {
+  margin: 0;
+  padding: 0;
+}
 
 * {
   margin: 0;
@@ -42,22 +39,16 @@
 
 body {
   margin: 0;
-  font-family:  "Caveat";
+  font-family: 'Caveat';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .App {
-  min-height: 100vh;
+  min-height: 100svh;
   min-width: 300px;
-  border: 4px solid var(--text-color-1);
   margin: auto;
-  background-color:  var(--bg-color-2);
-  display: grid;
-  justify-items: center;
-  align-content: space-between;
-  grid-template-rows:minmax(10px, 100px) minmax(40px, 150px) min(200px)r minmax(10px, 100px);
+  background-color: var(--bg-color-2);
 }
 
 input,
@@ -70,7 +61,10 @@ label,
   border: none;
   border-radius: 50px;
   padding: 0.5em 0.5em;
-
+}
+.error-mess,
+.loading-mess {
+  margin: 0 auto;
 }
 
 ::-webkit-scrollbar {
@@ -80,5 +74,5 @@ label,
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-color-1);
+  background: var(--clickable);
 }
