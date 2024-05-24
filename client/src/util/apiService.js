@@ -1,8 +1,4 @@
-// const SERVER_URL = 'http://0.0.0.0:8000';
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-console.log("SERVER_URL**************************");
-console.log(SERVER_URL);
-console.log("SERVER_URL**************************");
 
 export const getAllTodos = async () => {
   try {

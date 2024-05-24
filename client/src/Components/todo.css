@@ -8,7 +8,7 @@
   background-color: var(--bg-color-1);
   box-shadow: var(--shadow);
   width: 80%;
-  height: 6vmin;
+  /* height: 6vmin; */
 }
 
 label,
@@ -63,7 +63,7 @@ label {
 /*-------- SVG --------*/
 .btns {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: center;
 }
 
